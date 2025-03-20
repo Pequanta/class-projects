@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import InputBox from './Components/InputBox.jsx'
-import OutputBox from './Components/OutputBox'
+import OutputBox from './Components/OutputBox.jsx'
 function App() {
 
   return (
