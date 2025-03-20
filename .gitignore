@@ -1,0 +1,59 @@
+# ---- FRONTEND (React + Vite) ----
+# Dependencies
+frontend/node_modules/
+
+# Production build
+frontend/dist/
+
+# Vite cache
+frontend/.vite/
+
+# Environment files
+frontend/.env
+frontend/.env.*
+
+# Log files
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+# ---- BACKEND (FastAPI / Python) ----
+# Byte-compiled / cache
+backend/__pycache__/
+backend/*.py[cod]
+backend/**/*.py[cod]
+
+# Virtual environment
+backend/venv/
+backend/.venv/
+
+# Environment variables
+backend/.env
+
+# Mypy / Pyright / Coverage
+backend/.mypy_cache/
+backend/.pytest_cache/
+backend/.coverage
+backend/coverage.xml
+backend/htmlcov/
+
+# Database (optional)
+backend/*.db
+backend/*.sqlite3
+
+# Log files
+backend/*.log
+
+# ---- GENERAL ----
+# macOS
+.DS_Store
+
+# VSCode
+.vscode/
+
+# Local IDE settings
+.idea/
+
+# Optional: test reports
+*.pytest_cache/
+coverage/

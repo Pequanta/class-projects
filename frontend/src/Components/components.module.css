@@ -1,0 +1,41 @@
+.outputMain{
+    width: 70%;
+    height: 16rem;
+    background-color: white;
+    border-radius: 1rem;
+}
+
+
+.inputDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 1.5rem;
+}
+
+.inputDiv input{
+    width: 65%;
+    height: 2rem;
+    border-radius: 1rem;
+    background-color: aliceblue;
+    color: black;
+    font-size: 1.2rem;
+    font-weight: 300;
+}
+.valuesDiv{
+    width: 70%;
+}
+select{
+    width: 40%;
+    margin-left: 10rem;
+    font-size: 1.2rem;
+    text-align: center;
+    background-color: aliceblue;
+    color: black;
+    font-weight: 900;
+    border-radius: 5px;
+}
+
+
+
