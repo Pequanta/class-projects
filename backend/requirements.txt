@@ -1,0 +1,12 @@
+fastapi
+uvicorn[standard]
+
+# Encryption / Cryptography
+cryptography
+pyotp
+
+# For handling environment variables
+python-dotenv
+
+# Optional: if you're handling form data (e.g. login forms)
+python-multipart
