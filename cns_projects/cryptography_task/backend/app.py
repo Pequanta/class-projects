@@ -19,7 +19,7 @@ def lifespan(app: FastAPI):
     pass
 
 app = FastAPI(lifespan=lifespan)
-app.include_router(router, prefix="/block-chain", tags=["block-chain"])
+app.include_router(router, prefix="/crypto", tags=["crypto"])
 app.add_middleware(
     CORSMiddleware, 
     allow_origins = origins, 

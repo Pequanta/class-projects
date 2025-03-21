@@ -3,6 +3,9 @@
     height: 16rem;
     background-color: white;
     border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
