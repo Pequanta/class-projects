@@ -1,13 +1,20 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from routes.end_points import router
+
 
 """
 """
+
+
 CORSMiddleware
 origins = [
     "*"
     ]
 def lifespan(app: FastAPI):
-    pass
+    app.otp = None
+    app.three_des_cipher = None
+    app.aes_cipher = None
     yield
     pass
 
