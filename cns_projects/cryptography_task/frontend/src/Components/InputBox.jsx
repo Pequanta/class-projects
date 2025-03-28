@@ -31,7 +31,7 @@ function InputBox(props){
                 <span>Algorithm</span>
                 <select name="algorithm" value={algorithm} onChange={(event) => {changeAlgorithm(event)}}>
                     <option value="otp" >OTP</option>
-                    <option value="3des">3DES</option>
+                    <option value="three_des">3DES</option>
                     <option value="aes">AES</option>
                 </select>
             </div>

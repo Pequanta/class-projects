@@ -1,29 +1,17 @@
-import string
-import random
-import sys
-class OneTimePadCrypto:
-    def __init__(self):
-        self.lst_ascii = [chr(i) for i in range(12)]
-        self.one_time_pad = list(self.lst_ascii)
-    def encrypt(self, msg, key):
-        ciphertext = ''
-        for idx, char in enumerate(msg):
-            charIdx = self.lst_ascii.index(char)
-            keyIdx = self.one_time_pad.index(key[idx])
+import os
+from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 
-            cipher = (keyIdx + charIdx) % len(self.one_time_pad)
-            ciphertext +=  self.lst_ascii[cipher]
+# Pseudo-random key and initialisation vector
+key = os.urandom(32)           # (32*8=256-bit. AES also accepts 128/192-bit)
+init_vector = os.urandom(16)   # (16*8=128-bit. AES only accepts this size)
 
-        return ciphertext
+# Setup module-specific classes
+cipher = Cipher(algorithms.AES(key), modes.CBC(init_vector))
+encryptor = cipher.encryptor()
+decryptor = cipher.decryptor()
 
-    def decrypt(self, ciphertext, key):
-        if ciphertext == '' or key == '':
-            return ''
-
-        charIdx =  self.lst_ascii.index(ciphertext[0])
-        keyIdx = self.one_time_pad.index(key[0])
-
-        cipher = (charIdx - keyIdx) % len(self.one_time_pad)
-        char =  self.lst_ascii[cipher]
-
-        return char + self.decrypt(ciphertext[1:], key[1:])
+# Encrypt and decrypt data
+cyphertext = encryptor.update(b"a secret message") + encryptor.finalize()
+print(cyphertext)
+plaintext = decryptor.update(cyphertext) + decryptor.finalize()
+print(plaintext) # 'a secret message'
