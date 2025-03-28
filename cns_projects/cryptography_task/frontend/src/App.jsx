@@ -7,6 +7,7 @@ function App() {
   const [algorithm, setAlgorithm] = useState("otp"); //holds the users seleection
   const [message, setMessage] = useState();
   const [outputMessage, setOutputMessage] = useState();
+  const [encryptionOutput, setEncryptionOutput] = useState();
   const [encryptionKey, setEncryptionKey] = useState();
 
   const messageEncryptDecrypt = async (actionType)=>{  
@@ -20,15 +21,24 @@ function App() {
         );
         response = await request.json();
         setOutputMessage(response);
+        console.log(response)
         break;
       case "decrypt":
-        request = await fetch(`http://0.0.0.0:8080/crypto/decrypt-message?message=${message}&key=${encryptionKey}&algorithm=${algorithm}`,
+        request = await fetch(`http://0.0.0.0:8080/crypto/decrypt-message`,
           {
-            method: "POST"
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            
+            body:JSON.stringify({
+              message: message,
+              key: encryptionKey,
+              algorithm: algorithm
+            })
           }
         );
         response = await request.json();
-        setOutputMessage(response);
+        setEncryptionOutput(response);
+        console.log(response)
         break;
       default:
         console.log("Invalid request")
@@ -58,7 +68,7 @@ function App() {
           setMessage={setMessage}
           setEncryptionKey={setEncryptionKey}
         />
-        <OutputBox message={outputMessage}/>
+        <OutputBox message={encryptionOutput}/>
         <button onClick={()=>messageEncryptDecrypt("decrypt")}>Decrypt</button>
 
       </div>

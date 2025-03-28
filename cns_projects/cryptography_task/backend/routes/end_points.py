@@ -1,5 +1,6 @@
-from fastapi import APIRouter, Request, HTTPException
+from fastapi import APIRouter, Request, HTTPException, Body
 from utils.encryption_methods import OneTimePadCrypto, AESCrypto, ThreeDESCrypto
+from pydantic import BaseModel
 
 
 router = APIRouter()
@@ -7,6 +8,13 @@ otp_encryption = OneTimePadCrypto()
 
 three_des_encryption = ThreeDESCrypto()
 aes_encryption = AESCrypto()
+
+
+class RequestObject(BaseModel):
+    message: str
+    key: str
+    algorithm: str
+
 @router.get("/connect-check")
 async def check_connection():
     return {"message": "Connection works fine"}
@@ -24,8 +32,6 @@ async def encrypt_message(request: Request, message: str, key: str, algorithm: s
         elif algorithm == "three_des":
             encrypted_message = three_des_encryption.encrypt(message, key)
         elif algorithm == "aes":
-            print("another")
-            print("naother")
             encrypted_message = aes_encryption.encrypt(message, key)
         else:
             raise HTTPException(status=404, detail="Unknown encryption method")
@@ -34,9 +40,12 @@ async def encrypt_message(request: Request, message: str, key: str, algorithm: s
     except:
         raise HTTPException(status_code=404)
 @router.post("/decrypt-message")
-async def decrypt_message(request: Request, message: str, key: str, algorithm: str):
+async def decrypt_message(request: Request, param: RequestObject):
+    print(param.message)
+    message = param.message
+    key=param.key
+    algorithm = param.algorithm
     decrypted_message = None
-    print(message)
     try:
         if algorithm == "otp":
             decrypted_message = otp_encryption.decrypt(message, key)
