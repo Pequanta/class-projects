@@ -1,3 +1,10 @@
+div{
+    display: felx;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: auto;
+}
 .main-page{
     display: flex;
     width: 100%;

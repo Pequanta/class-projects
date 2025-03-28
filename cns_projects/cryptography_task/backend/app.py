@@ -12,9 +12,7 @@ origins = [
     "*"
     ]
 def lifespan(app: FastAPI):
-    app.otp = None
-    app.three_des_cipher = None
-    app.aes_cipher = None
+    pass
     yield
     pass
 
