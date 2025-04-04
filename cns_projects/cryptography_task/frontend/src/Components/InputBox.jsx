@@ -1,8 +1,9 @@
 import styles from "./components.module.css";
 import { useState } from "react";
 function InputBox(props){
-
+    const [selectedAlgorithm, setSelectedAlgorithm] = useState();
     const changeAlgorithm = (event) =>{
+        setSelectedAlgorithm(event.target.value);
         props.setAlgorithm(event.target.value);
         setAlgorithm(event.target.value) //To allow the local variable to change inorder to be accessed by the select-option tag
     }
@@ -25,8 +26,12 @@ function InputBox(props){
             <textarea onChange={(event) => handleMessageChange(event)}></textarea>
             <div className={styles.valuesDiv}>
                 <div>
-                    <span>{props.keyType} key</span>
-                    <input type="text" id="encryption-key" onChange={event=>handleKeyChange(event)}/>
+                {(selectedAlgorithm !== "rsa") &&
+                     <>
+                     <span>{props.keyType} key</span>
+                     <input type="text" id="encryption-key" onChange={event=>handleKeyChange(event)}/>
+                     </>
+                     }
                 </div>
                 <span>Algorithm</span>
                 <select name="algorithm" value={algorithm} onChange={(event) => {changeAlgorithm(event)}}>

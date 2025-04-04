@@ -59,8 +59,8 @@ async def decrypt_message(request: Request, param: RequestObject):
             decrypted_message = three_des_encryption.decrypt(message, key)
         elif algorithm == "aes":
             decrypted_message = aes_encryption.decrypt(message, key)
-        elif algorithm == "aes":
-            decrypted_message = aes_encryption.decrypt(message, key)
+        elif algorithm == "rsa":
+            decrypted_message = rsa_encryption.decrypt(message)
         else:
             raise HTTPException(status=404, detail="Unknown encryption method")
         return decrypted_message

@@ -8,7 +8,7 @@ function App() {
   const [message, setMessage] = useState();
   const [outputMessage, setOutputMessage] = useState();
   const [encryptionOutput, setEncryptionOutput] = useState();
-  const [encryptionKey, setEncryptionKey] = useState();
+  const [encryptionKey, setEncryptionKey] = useState("");
 
   const messageEncryptDecrypt = async (actionType)=>{  
     let request, response;
