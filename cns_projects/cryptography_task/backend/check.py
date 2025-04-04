@@ -14,4 +14,3 @@ decryptor = cipher.decryptor()
 cyphertext = encryptor.update(b"a secret message") + encryptor.finalize()
 print(cyphertext)
 plaintext = decryptor.update(cyphertext) + decryptor.finalize()
-print(plaintext) # 'a secret message'

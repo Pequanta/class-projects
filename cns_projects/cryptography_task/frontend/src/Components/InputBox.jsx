@@ -33,6 +33,7 @@ function InputBox(props){
                     <option value="otp" >OTP</option>
                     <option value="three_des">3DES</option>
                     <option value="aes">AES</option>
+                    <option value="rsa">RSA</option>
                 </select>
             </div>
         </div>
